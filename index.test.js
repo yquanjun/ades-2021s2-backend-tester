@@ -68,25 +68,25 @@ function send(method, url, query, body) {
     });
 }
 function serverAvailable(input, status, body) {
-    console.log('====> Server Available');
+    console.log(`====> Server Available, ${input}, ${status}, ${body}`);
     return send('PUT', url('/company/server'), {}, { queue_id: queueId })
         .then(handleSuccess(status, { customer_id: parseInt(body) }))
         .catch(handleError(status, body));
 }
 function updateQueue(input, status, body) {
-    console.log('====> Update Queue');
+    console.log(`====> Update Queue, ${input}, ${status}, ${body}`);
     return send('PUT', url('/company/queue'), { queue_id: queueId }, { status: input })
         .then(handleSuccess(status))
         .catch(handleError(status, body));
 }
 function joinQueue(input, status, body) {
-    console.log('====> Join Queue');
+    console.log(`====> Join Queue, ${input}, ${status}, ${body}`);
     return send('POST', url('/customer/queue'), {}, { queue_id: queueId, customer_id: parseInt(input) })
         .then(handleSuccess(status))
         .catch(handleError(status, body));
 }
 function arrivalRate(input, status, body) {
-    console.log('====> Arrival Rate', body);
+    console.log(`====> Arrival Rate, ${input}, ${status}, ${body}`);
     const [totalCount, responseLength] = body
         .substring(1, body.length - 1)
         .split(',')
@@ -102,7 +102,7 @@ function arrivalRate(input, status, body) {
         .catch(handleError(status, body));
 }
 function checkQueue(input, status, body) {
-    console.log('====> Check Queue', body);
+    console.log(`====> Check Queue, ${input}, ${status}, ${body}`);
     const [total, ahead, queueStatus] = body.split(',');
     return send('GET', url('/customer/queue'), { customer_id: input ? parseInt(input) : null, queue_id: queueId }, {})
         .then(
@@ -115,7 +115,7 @@ function checkQueue(input, status, body) {
         .catch(handleError(status, body));
 }
 function createQueue(input, status, body) {
-    console.log('====> Create Queue');
+    console.log(`====> Create Queue, ${input}, ${status}, ${body}`);
     return send('POST', url('/company/queue'), {}, { queue_id: queueId, company_id: parseInt(input) })
         .then(handleSuccess(status))
         .catch(handleError(status, body));
@@ -136,6 +136,7 @@ const rl = readline.createInterface({
 
 const lines = [];
 const result = [];
+let passedCount = 0;
 rl.on('line', (line) => lines.push(line)).on('close', async () => {
     const total = lines.length;
     for (let i = 0; i < total; i++) {
@@ -146,10 +147,12 @@ rl.on('line', (line) => lines.push(line)).on('close', async () => {
     for (let i = 0; i < result.length; i++) {
         let message = `Test Case ${(i + 1).toString().padStart(2, '0')} of ${result.length}: `;
         if (result[i]) {
+            passedCount++;
             message += `${chalk.green('Passed')}`;
         } else {
             message += `${chalk.red('Failed')}`;
         }
         console.log(message);
     }
+    console.log(`\nScore: ${passedCount} / ${total}`);
 });
