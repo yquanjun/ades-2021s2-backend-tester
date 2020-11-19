@@ -4,13 +4,17 @@ This tester tests the correctness of the overall system, it should be compliment
 
 ## Running the test
 
-1. Start your backend on `localhost`, on port `3000`
-2. Run `index.test.js` on either `cmd` for windows or `terminal` for mac.
+1. Install packages
+    ```
+    $ npm install
+    ```
+2. Start your backend on `localhost`, on port `3000`
+3. Run `index.test.js` on either `cmd` for windows or `terminal` for mac.
     ```
     $ node ./index.test.js < ./virtual-queue-test-cases.txt
     ```
-3. Inspect the pass/fail result in cmd.
-4. Inspect any errors in your app's terminal.
+4. Inspect the pass/fail result in cmd.
+5. Inspect any errors in your app's terminal.
 
 ## Files
 
