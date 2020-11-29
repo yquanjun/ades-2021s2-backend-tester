@@ -9,10 +9,7 @@ This tester tests the correctness of the overall system, it should be compliment
     $ npm install
     ```
 2. Start your backend on `localhost`, on port `3000`
-3. Run `index.test.js` on either `cmd` for windows or `terminal` for mac.
-    ```
-    $ node ./index.test.js < ./virtual-queue-test-cases.txt
-    ```
+3. Run `npm test`
 4. Inspect the pass/fail result in cmd.
 5. Inspect any errors in your app's terminal.
 
