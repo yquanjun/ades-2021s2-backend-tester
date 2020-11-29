@@ -1,0 +1,26 @@
+{
+    "name": "ades-2021s2-backend-tester",
+    "version": "1.0.0",
+    "description": "This tester tests the correctness of the overall system, it should be complimented with the test cases provided to the students which tests the correctness of each API's response.",
+    "main": "index.test.js",
+    "dependencies": {
+        "axios": "^0.21.0",
+        "chalk": "^4.1.0",
+        "dayjs": "^1.9.6",
+        "jest": "^26.6.3"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "node ./index.test.js < ./virtual-queue-test-cases.txt"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ADES-FSP/ades-2021s2-backend-tester.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ADES-FSP/ades-2021s2-backend-tester/issues"
+    },
+    "homepage": "https://github.com/ADES-FSP/ades-2021s2-backend-tester#readme"
+}
