@@ -1,0 +1,31 @@
+config:
+    target: 'http://localhost:3000'
+    payload:
+        - path: './queue_id.csv'
+          fields:
+              - queue_id
+    phases:
+        - name: Warm up
+          duration: 10
+          arrivalRate: 5
+        - name: Ramp up load
+          duration: 10
+          arrivalRate: 5
+          rampTo: 15
+        - name: Ramp down load
+          duration: 10
+          arrivalRate: 15
+          rampTo: 5
+        - name: Cool down
+          duration: 10
+          arrivalRate: 5
+    processor: './processor.js'
+scenarios:
+    - name: 'single peak'
+      flow:
+          - function: setCustomerId
+          - post:
+                url: '/customer/queue'
+                json:
+                    customer_id: '{{ customer_id }}'
+                    queue_id: '{{ queue_id }}'

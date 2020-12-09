@@ -4,6 +4,7 @@
     "description": "This tester tests the correctness of the overall system, it should be complimented with the test cases provided to the students which tests the correctness of each API's response.",
     "main": "index.test.js",
     "dependencies": {
+        "artillery": "^1.6.1",
         "axios": "^0.21.0",
         "chalk": "^4.1.0",
         "dayjs": "^1.9.6",
@@ -11,7 +12,10 @@
     },
     "devDependencies": {},
     "scripts": {
-        "test": "node ./index.test.js < ./virtual-queue-test-cases.txt"
+        "test": "node ./index.test.js < ./virtual-queue-test-cases.txt",
+        "website": "node ./index.test.js < ./website-dev-sample-data.txt",
+        "single-peak": "artillery run single-peak.yaml",
+        "website-single-peak": "npm run website && npm run single-peak"
     },
     "repository": {
         "type": "git",

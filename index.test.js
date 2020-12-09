@@ -2,9 +2,10 @@ const chalk = require('chalk');
 const axios = require('axios');
 const dayjs = require('dayjs');
 
-const queueId = 'QUEUE12345';
 const baseUrl = 'http://localhost:3000';
 const now = dayjs().toISOString();
+
+let queueId = 'QUEUE12345';
 
 function equalObject(expected, actual) {
     return Object.keys(expected).every((key) => {
@@ -120,7 +121,29 @@ function createQueue(input, status, body) {
         .then(handleSuccess(status))
         .catch(handleError(status, body));
 }
-const actions = [null, serverAvailable, updateQueue, joinQueue, arrivalRate, checkQueue, createQueue];
+function setQueueId(input, status, body) {
+    console.log(`====> Set Queue Id, ${input}`);
+    queueId = input;
+    return handleSuccess(200)({
+        status: 200,
+        data: `Updated Queue Id to: ${input}`,
+    });
+}
+function reset(input, status, body) {
+    console.log(`====> Reset`);
+    return send('POST', url('/reset'), {}, {}).then(handleSuccess(status)).catch(handleError(status, body));
+}
+const actions = [
+    null,
+    serverAvailable, //1
+    updateQueue, //2
+    joinQueue, //3
+    arrivalRate, //4
+    checkQueue, //5
+    createQueue, //6
+    setQueueId, //7
+    reset, //8
+];
 
 function testLine(line) {
     const [action, input, status, body] = line.split('\t');
