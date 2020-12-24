@@ -1,9 +1,7 @@
 config:
     target: 'http://localhost:3000'
-    payload:
-        - path: './queue_id.csv'
-          fields:
-              - queue_id
+    variables:
+        queue_id: QUEUE01001
     phases:
         - name: Warm up
           duration: 10

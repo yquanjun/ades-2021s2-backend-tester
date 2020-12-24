@@ -13,9 +13,10 @@
     "devDependencies": {},
     "scripts": {
         "test": "node ./index.test.js < ./virtual-queue-test-cases.txt",
-        "website": "node ./index.test.js < ./website-dev-sample-data.txt",
-        "single-peak": "artillery run single-peak.yaml",
-        "website-single-peak": "npm run website && npm run single-peak"
+        "populate-website": "node ./index.test.js < ./website-dev-sample-data.txt",
+        "single-peak": "artillery run  ./artillery-configs/single-peak.yaml",
+        "double-peak": "artillery run ./artillery-configs/double-peak.yaml",
+        "sustained-peak": "artillery run ./artillery-configs/sustained-peak.yaml"
     },
     "repository": {
         "type": "git",

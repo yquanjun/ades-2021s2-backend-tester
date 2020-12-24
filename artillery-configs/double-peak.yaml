@@ -1,9 +1,7 @@
 config:
     target: 'http://localhost:3000'
-    payload:
-        - path: './queue_id.csv'
-          fields:
-              - queue_id
+    variables:
+        queue_id: QUEUE01002
     phases:
         - name: Warm up
           duration: 10
@@ -12,14 +10,22 @@ config:
           duration: 10
           arrivalRate: 5
           rampTo: 15
-        - name: Sustain load
-          duration: 30
-          arrivalRate: 15
         - name: Ramp down load
           duration: 10
           arrivalRate: 15
           rampTo: 5
-        - name: Cool down
+        - name: Sustain low load
+          duration: 20
+          arrivalRate: 5
+        - name: Ramp up load
+          duration: 10
+          arrivalRate: 5
+          rampTo: 15
+        - name: Ramp down load
+          duration: 10
+          arrivalRate: 15
+          rampTo: 5
+        - name: Sustain low load
           duration: 10
           arrivalRate: 5
     processor: './processor.js'
