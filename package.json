@@ -16,7 +16,10 @@
         "populate-website": "node ./index.test.js < ./website-dev-sample-data.txt",
         "single-peak": "artillery run  ./artillery-configs/single-peak.yaml",
         "double-peak": "artillery run ./artillery-configs/double-peak.yaml",
-        "sustained-peak": "artillery run ./artillery-configs/sustained-peak.yaml"
+        "sustained-peak": "artillery run ./artillery-configs/sustained-peak.yaml",
+        "start-win": ".\\bin\\www-win.exe",
+        "start-macos": "./bin/www-macos",
+        "start-linux": "./bin/www-linux"
     },
     "repository": {
         "type": "git",
