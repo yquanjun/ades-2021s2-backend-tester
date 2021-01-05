@@ -21,7 +21,13 @@
     npm run start-win
     ```
 
-3. Start populating customers with the following
+3. Create Queues in the backend
+
+    ```
+    npm run populate-website
+    ```
+
+4. Start populating customers with the following
 
     ```
     npm run <SCENARIO>
