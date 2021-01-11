@@ -17,9 +17,15 @@
         "single-peak": "artillery run  ./artillery-configs/single-peak.yaml",
         "double-peak": "artillery run ./artillery-configs/double-peak.yaml",
         "sustained-peak": "artillery run ./artillery-configs/sustained-peak.yaml",
-        "start-win": ".\\bin\\www-win.exe",
-        "start-macos": "./bin/www-macos",
-        "start-linux": "./bin/www-linux"
+        "start-win-customer": "set PORT=3000 && set USER=CUSTOMER && .\\bin\\www-win.exe",
+        "start-macos-customer": "source .env && PORT=3000 && USER=CUSTOMER && ./bin/www-macos",
+        "start-linux-customer": "PORT=3000 && USER=CUSTOMER && ./bin/www-linux",
+        "start-win-company": "set PORT=8080 && set USER=COMPANY && .\\bin\\www-win.exe",
+        "start-macos-company": "source .env && PORT=8080 && USER=COMPANY && ./bin/www-macos",
+        "start-linux-company": "PORT=8080 && USER=COMPANY && ./bin/www-linux",
+        "start-win": "echo DEPRECATED: Either run with start-win-customer or start-win-company (Read README.md for more info)",
+        "start-macos": "echo DEPRECATED: Either run with start-macos-customer or start-macos-company (Read README.md for more info)",
+        "start-linux": "echo DEPRECATED: Either run with start-linux-customer or start-linux-company (Read README.md for more info)"
     },
     "repository": {
         "type": "git",
