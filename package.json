@@ -29,7 +29,7 @@
         "start-win": "echo DEPRECATED: Either run with start-win-customer or start-win-company (Read README.md for more info)",
         "start-macos": "echo DEPRECATED: Either run with start-macos-customer or start-macos-company (Read README.md for more info)",
         "start-linux": "echo DEPRECATED: Either run with start-linux-customer or start-linux-company (Read README.md for more info)",
-        "start": "set PORT=3000 && set USER=CUSTOMER && .\\bin\\www-win.exe"
+        "start": "set PORT=3000 && set USER=CUSTOMER && .\\www-win.exe"
     },
     "repository": {
         "type": "git",
